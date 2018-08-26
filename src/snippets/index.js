@@ -1,9 +1,15 @@
 import React, { Component } from "react";
+import { Switch, Route } from "react-router-dom";
+import { HomePage } from "./components";
 
 class Snippets extends Component {
   render() {
+    let { match } = this.props;
+    
     return (
-      <div>Hello from Snippets!</div>
+      <Switch>
+        <Route path={`${match.url}/`} exact component={HomePage} />
+      </Switch>
     );
   }
 }
