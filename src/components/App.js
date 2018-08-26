@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -31,6 +31,7 @@ class App extends Component {
         </AppBar>
 
         <Switch>
+          <Route exact path="/" component={() => <Redirect to="/snippets" />} />
           <Route path="/snippets" component={Snippets} />
         </Switch>
       </div>
