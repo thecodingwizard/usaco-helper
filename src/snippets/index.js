@@ -4,7 +4,7 @@ import { HomePage } from "./components";
 
 class Snippets extends Component {
   render() {
-    let { match } = this.props;
+    const { match } = this.props;
     
     return (
       <Switch>
