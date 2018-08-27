@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core";
+import { SnippetList } from "../../components";
 
 const styles = {
   container: {
@@ -15,7 +16,7 @@ class HomePage extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
-        Hi
+        <SnippetList />
       </div>
     );
   }
