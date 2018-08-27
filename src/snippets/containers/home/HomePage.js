@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { SnippetList } from "../../components";
 
 const styles = {
@@ -12,41 +14,21 @@ const styles = {
 };
 
 class HomePage extends Component {
-  constructor(props) {
-    super(props);
-
-    // temporary until redux gets implemented
-    this.state = {
-      snippets: [
-        {
-          id: "abc",
-          title: "Fenwick Tree",
-          description: "Implementation of an OOP-style fenwick tree"
-        },
-        {
-          id: "bcd",
-          title: "Binary Tree",
-          description: "Implementation of a generic binary tree"
-        },
-        {
-          id: "cde",
-          title: "Segment Tree",
-          description: "Implementation of an OOP-style segment tree"
-        },
-      ]
-    };
-  }
-
   render() {
-    const { classes } = this.props;
-    const { snippets } = this.state;
+    const { classes, snippets, loading } = this.props;
 
     return (
       <div className={classes.container}>
-        <SnippetList snippets={snippets} />
+        {loading && <CircularProgress />}
+        {!loading && <SnippetList snippets={snippets} />}
       </div>
     );
   }
 }
 
-export default withStyles(styles)(HomePage);
+const mapStateToProps = (state) => ({
+  loading: state.snippets.loading,
+  snippets: state.snippets.snippets
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(HomePage));
