@@ -1,0 +1,1 @@
+export { default as snippetsReducer } from "./snippets.reducer";

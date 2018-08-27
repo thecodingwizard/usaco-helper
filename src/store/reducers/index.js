@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
 
-const rootReducer = combineReducers({
+import { snippetsReducer } from "../../snippets/store";
 
+const rootReducer = combineReducers({
+  snippets: snippetsReducer
 });
 
 export default rootReducer;
