@@ -1,9 +1,6 @@
-export const actions = {
-  SNIPPET_LIST: {
-    GET: "[Snippets] Get Snippet List"
-  }
-}
+export const SYNC_SNIPPETS_LIST = "[Snippets] Sync Snippets List";
 
-export const getSnippetList = () => ({
-  type: actions.SNIPPET_LIST.GET
+export const syncSnippetsList = snippets => ({
+  type: SYNC_SNIPPETS_LIST,
+  payload: snippets
 });

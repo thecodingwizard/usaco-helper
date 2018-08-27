@@ -1,32 +1,17 @@
-import { actions } from "../actions";
+import * as actions from "../actions/snippets.actions";
 
 const initialState = {
-  loading: false,
-  snippets: [
-    {
-      id: "abc",
-      title: "Fenwick Tree",
-      description: "Implementation of an OOP-style fenwick tree"
-    },
-    {
-      id: "bcd",
-      title: "Binary Tree",
-      description: "Implementation of a generic binary tree"
-    },
-    {
-      id: "cde",
-      title: "Segment Tree",
-      description: "Implementation of an OOP-style segment tree"
-    },
-  ]
+  loading: true,
+  snippets: []
 };
 
 const snippetsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.SNIPPET_LIST.GET: {
+    case actions.SYNC_SNIPPETS_LIST: {
       return {
         ...state,
-        loading: true
+        snippets: action.payload,
+        loading: false
       };
     }
     default: {

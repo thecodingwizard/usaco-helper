@@ -62,7 +62,7 @@
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@firebase/firestore-types/-/firestore-types-0.6.0.tgz#560befea439a4a9d830866fa5f5859e4bb30d770"
 
-"@firebase/firestore@0.7.1":
+"@firebase/firestore@0.7.1", "@firebase/firestore@^0.7.1":
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@firebase/firestore/-/firestore-0.7.1.tgz#41a820934b45409b40aedccfc3ba61228b70b51b"
   dependencies:
