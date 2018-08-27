@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import { HomePage } from "./components";
+import { HomePage } from "./containers";
 
 class Snippets extends Component {
   render() {
