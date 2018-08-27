@@ -1,9 +1,25 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core";
 
-export class HomePage extends Component {
+const styles = {
+  container: {
+    padding: "2em",
+    width: "100%",
+    maxWidth: "40em",
+    backgroundColor: "blue",
+    margin: "auto",
+  }
+};
+
+class HomePage extends Component {
   render() {
+    const { classes } = this.props;
     return (
-      <div>Snippets Home Page</div>
+      <div className={classes.container}>
+        Hi
+      </div>
     );
   }
 }
+
+export default withStyles(styles)(HomePage);
