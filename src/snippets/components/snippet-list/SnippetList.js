@@ -14,7 +14,7 @@ const styles = {
 const SnippetList = (props) => {
   return (
     <div>
-      <List subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}>
+      <List subheader={<ListSubheader component="div">Competitive Programming Snippets</ListSubheader>}>
         {props.snippets.map(snip => (
           <ListItem key={snip.id} button component={Link} to={`/snippets/${snip.id}`}>
             <ListItemText
