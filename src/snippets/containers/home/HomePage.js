@@ -14,17 +14,25 @@ const styles = {
 class HomePage extends Component {
   constructor(props) {
     super(props);
-    
+
     // temporary until redux gets implemented
     this.state = {
       snippets: [
         {
           id: "abc",
           title: "Fenwick Tree",
-          author: "Nathan Wang",
-          description: "Implementation of a basic OOP-style fenwick tree",
-          language: "C++11"
-        }
+          description: "Implementation of an OOP-style fenwick tree"
+        },
+        {
+          id: "bcd",
+          title: "Binary Tree",
+          description: "Implementation of a generic binary tree"
+        },
+        {
+          id: "cde",
+          title: "Segment Tree",
+          description: "Implementation of an OOP-style segment tree"
+        },
       ]
     };
   }

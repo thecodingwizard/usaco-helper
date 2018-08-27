@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const styles = {
 
@@ -9,15 +14,15 @@ const styles = {
 const SnippetList = (props) => {
   return (
     <div>
-      <p>Snippet list!</p>
-      {props.snippets.map(snip => (
-        <div key={snip.id}>
-          <p>ID: {snip.id}</p>
-          <p>Title: {snip.title}</p>
-          <p>Author: {snip.author}</p>
-          <p>Description: {snip.description}</p>
-        </div>
-      ))}
+      <List subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}>
+        {props.snippets.map(snip => (
+          <ListItem key={snip.id} button component={Link} to={`/snippets/${snip.id}`}>
+            <ListItemText
+              primary={snip.title}
+              secondary={snip.description} />
+          </ListItem>
+        ))}
+      </List>
     </div>
   );
 }
