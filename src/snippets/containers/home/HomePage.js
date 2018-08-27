@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { SnippetList } from "../../components";
+import * as actions from "../../store/actions";
 
 const styles = {
   container: {
@@ -14,6 +15,14 @@ const styles = {
 };
 
 class HomePage extends Component {
+  componentDidMount() {
+    this.props.startSync();
+  }
+
+  componentWillUnmount() {
+    this.props.stopSync();
+  }
+
   render() {
     const { classes, snippets, loading } = this.props;
 
@@ -31,4 +40,9 @@ const mapStateToProps = (state) => ({
   snippets: state.snippets.snippets
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(HomePage));
+const mapDispatchToProps = (dispatch) => ({
+  startSync: () => dispatch(actions.startSnippetsListSync()),
+  stopSync: () => dispatch(actions.stopSnippetsListSync())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HomePage));

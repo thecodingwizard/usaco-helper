@@ -1,4 +1,4 @@
-import { all, fork } from "redux-saga/effects";
+import { all, fork, take, cancel } from "redux-saga/effects";
 
 import * as actions from "../actions";
 
@@ -14,14 +14,21 @@ const snippetsTransformer = snippets => {
 };
 
 function* syncSnippetsListSaga() {
-  yield fork(
-    rsf.firestore.syncCollection,
-    "snippets",
-    {
-      successActionCreator: actions.syncSnippetsList,
-      transform: snippetsTransformer
-    }
-  );
+  while (true) {
+    yield take(actions.START_SNIPPETS_LIST_SYNC);
+
+    let task = yield fork(
+      rsf.firestore.syncCollection,
+      "snippets",
+      {
+        successActionCreator: actions.syncSnippetsList,
+        transform: snippetsTransformer
+      }
+    );
+
+    yield take(actions.STOP_SNIPPETS_LIST_SYNC);
+    yield cancel(task);
+  }
 }
 
 export default function* snippetsSaga() {
