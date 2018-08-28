@@ -44,7 +44,7 @@ const SnippetDetail = (props) => {
           <Typography>{snippet.description}</Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
-      <ExpansionPanel expanded>
+      <ExpansionPanel defaultExpanded>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography className={classes.descriptionHeading}>Code Snippet</Typography>
         </ExpansionPanelSummary>
