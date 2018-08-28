@@ -12,10 +12,14 @@ const styles = {
 };
 
 const SnippetList = (props) => {
+  const { snippets } = props;
+
+  if (!snippets) return <div>Error: snippets is undefined.</div>;
+  
   return (
     <div>
       <List subheader={<ListSubheader component="div">Competitive Programming Snippets</ListSubheader>}>
-        {props.snippets.map(snip => (
+        {snippets.map(snip => (
           <ListItem key={snip.id} button component={Link} to={`/snippets/${snip.id}`}>
             <ListItemText
               primary={snip.title}
@@ -25,7 +29,7 @@ const SnippetList = (props) => {
       </List>
     </div>
   );
-}
+};
 
 SnippetList.propTypes = {
   snippets: PropTypes.array.isRequired

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import { HomePage } from "./containers";
+import * as containers from "./containers";
 
 class Snippets extends Component {
   render() {
@@ -8,7 +8,8 @@ class Snippets extends Component {
     
     return (
       <Switch>
-        <Route path={`${match.url}/`} exact component={HomePage} />
+        <Route path={`${match.url}/`} exact component={containers.HomePage} />
+        <Route path={`${match.url}/:id`} exact component={containers.SnippetDetailPage} />
       </Switch>
     );
   }

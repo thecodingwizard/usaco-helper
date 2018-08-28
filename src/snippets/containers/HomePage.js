@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { SnippetList } from "../../components";
-import * as actions from "../../store/actions";
+import { SnippetList } from "../components";
+import * as actions from "../store/actions";
 
 const styles = {
   container: {

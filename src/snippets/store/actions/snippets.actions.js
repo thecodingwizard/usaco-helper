@@ -14,3 +14,21 @@ export const startSnippetsListSync = () => ({
 export const stopSnippetsListSync = () => ({
   type: STOP_SNIPPETS_LIST_SYNC
 });
+
+export const SYNC_SELECTED_SNIPPET = "[Snippets] Sync Selected Snippet";
+export const START_SELECTED_SNIPPET_SYNC = "[Snippets] Start Selected Snippet Sync";
+export const STOP_SELECTED_SNIPPET_SYNC = "[Snippets] Stop Selected Snippet Sync";
+
+export const syncSelectedSnippet = snippet => ({
+  type: SYNC_SELECTED_SNIPPET,
+  payload: snippet
+});
+
+export const startSelectedSnippetSync = snippetId => ({
+  type: START_SELECTED_SNIPPET_SYNC,
+  payload: snippetId
+});
+
+export const stopSelectedSnippetSync = () => ({
+  type: STOP_SELECTED_SNIPPET_SYNC
+});

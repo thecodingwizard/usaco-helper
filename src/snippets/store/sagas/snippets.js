@@ -4,12 +4,16 @@ import * as actions from "../actions";
 
 import rsf from "../../../store/rsf";
 
-const snippetsTransformer = snippets => {
-  const res = [];
-  snippets.forEach(doc => res.push({
+const snippetTransformer = doc => {
+  return {
     id: doc.id,
     ...doc.data()
-  }));
+  };
+}
+
+const snippetsTransformer = snippets => {
+  const res = [];
+  snippets.forEach(doc => res.push(snippetTransformer(doc)));
   return res;
 };
 
@@ -31,8 +35,27 @@ function* syncSnippetsListSaga() {
   }
 }
 
+function* syncSelectedSnippetSaga() {
+  while (true) {
+    const action = yield take(actions.START_SELECTED_SNIPPET_SYNC);
+
+    let task = yield fork(
+      rsf.firestore.syncDocument,
+      `snippets/${action.payload}`,
+      {
+        successActionCreator: actions.syncSelectedSnippet,
+        transform: snippetTransformer
+      }
+    );
+    
+    yield take(actions.STOP_SELECTED_SNIPPET_SYNC);
+    yield cancel(task);
+  }
+}
+
 export default function* snippetsSaga() {
   yield all([
-    fork(syncSnippetsListSaga)
+    fork(syncSnippetsListSaga),
+    fork(syncSelectedSnippetSaga)
   ]);
 }
