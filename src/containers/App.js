@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,8 +11,9 @@ const styles = {
   root: {
     flexGrow: 1,
   },
-  flex: {
+  brand: {
     flexGrow: 1,
+    textDecoration: "none",
   },
 };
 
@@ -24,7 +25,12 @@ class App extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="title" color="inherit" className={classes.flex}>
+            <Typography
+              variant="title"
+              color="inherit"
+              className={classes.brand}
+              component={Link}
+              to="/">
               USACO Snippets
             </Typography>
           </Toolbar>
