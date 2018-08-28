@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import * as actions from "../store/actions";
 import { SnippetDetail } from "../components";
+
+const styles = {
+  container: {
+    padding: "2em",
+    width: "100%",
+    maxWidth: "80em",
+    margin: "auto",
+  }
+};
 
 class SnippetDetailPage extends Component {
   componentDidMount() {
@@ -21,10 +31,10 @@ class SnippetDetailPage extends Component {
   }
 
   render() {
-    const { snippet, loading } = this.props;
+    const { snippet, loading, classes } = this.props;
 
     return (
-      <div>
+      <div className={classes.container}>
         {loading && <CircularProgress />}
         {!loading && <SnippetDetail snippet={snippet} />}
       </div>
@@ -42,4 +52,4 @@ const mapDispatchToProps = (dispatch) => ({
   stopSelectedSnippetSync: () => dispatch(actions.stopSelectedSnippetSync())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SnippetDetailPage);
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(SnippetDetailPage));
