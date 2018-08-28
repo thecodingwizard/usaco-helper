@@ -23,7 +23,7 @@ const SnippetList = (props) => {
           <ListItem key={snip.id} button component={Link} to={`/snippets/${snip.id}`}>
             <ListItemText
               primary={snip.title}
-              secondary={snip.description} />
+              secondary={snip.shortDescription} />
           </ListItem>
         ))}
       </List>
