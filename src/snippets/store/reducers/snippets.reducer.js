@@ -1,7 +1,7 @@
 import * as actions from "../actions/snippets.actions";
 
 const initialState = {
-  loading: true,
+  loading: false,
   snippets: [],
   selectedSnippet: null
 };

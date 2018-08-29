@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import AceEditor from "react-ace";
+import "brace/mode/c_cpp";
+import "brace/theme/textmate";
 
 const styles = theme => ({
   margin: {
@@ -28,6 +32,21 @@ const renderTextField = ({
     {...input}
     {...custom} />
 );
+
+const renderCodeEditor = ({
+  input
+}) => (
+  <AceEditor
+    mode="c_cpp"
+    name="snippetCode"
+    theme="textmate"
+    editorProps={{$blockScrolling: true}}
+    width="100%"
+    fontSize={14}
+    onChange={(val, ev) => input.onChange(val)}
+    value={input.value}
+    height="300px" />
+)
 
 const SnippetForm = (props) => {
   const { handleSubmit, pristine, submitting, classes, submitButtonDisabled } = props;
@@ -56,13 +75,12 @@ const SnippetForm = (props) => {
           multiline />
       </div>
       <div className={classes.margin}>
+        <Typography variant="subheading" gutterBottom>
+          Code Snippet:
+        </Typography>
         <Field
           name="snippet"
-          component={renderTextField}
-          label="Snippet Code"
-          fullWidth
-          multiline
-          rowsMax="15" />
+          component={renderCodeEditor} />
       </div>
       <div className={classes.submitContainer}>
         <Button

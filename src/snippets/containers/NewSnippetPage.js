@@ -7,7 +7,10 @@ import baseStyles from "../../styles";
 import * as actions from "../store/actions";
 
 const styles = theme => ({
-  container: baseStyles.smallContainer,
+  container: {
+    ...baseStyles.smallContainer,
+    maxWidth: "47em",
+  },
   heading: {
     fontSize: theme.typography.display1.fontSize
   }
