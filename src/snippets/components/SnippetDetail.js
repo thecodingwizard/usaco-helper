@@ -5,8 +5,9 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import SyntaxHighlighter from "react-syntax-highlighter/prism";
-import { dark } from "react-syntax-highlighter/styles/prism";
+import AceEditor from "react-ace";
+import "brace/mode/c_cpp";
+import "brace/theme/textmate";
 
 const styles = theme => ({
   shortDescription: {
@@ -19,9 +20,6 @@ const styles = theme => ({
   descriptionHeading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
-  },
-  snippet: {
-    width: "100%",
   },
 });
 
@@ -49,9 +47,15 @@ const SnippetDetail = (props) => {
           <Typography className={classes.descriptionHeading}>Code Snippet</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <SyntaxHighlighter language="cpp" style={dark} className={classes.snippet}>
-            {snippet.snippet}
-          </SyntaxHighlighter>
+          <AceEditor
+            mode="c_cpp"
+            theme="textmate"
+            name="snippetCode"
+            readOnly
+            value={snippet.snippet}
+            editorProps={{$blockScrolling: true}}
+            width="100%"
+            fontSize={14} />
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>
