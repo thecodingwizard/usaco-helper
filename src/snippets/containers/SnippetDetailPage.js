@@ -11,6 +11,7 @@ const styles = {
     width: "100%",
     maxWidth: "80em",
     margin: "auto",
+    boxSizing: "border-box",
   }
 };
 
