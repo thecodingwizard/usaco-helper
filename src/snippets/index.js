@@ -9,7 +9,8 @@ class Snippets extends Component {
     return (
       <Switch>
         <Route path={`${match.url}/`} exact component={containers.HomePage} />
-        <Route path={`${match.url}/:id`} exact component={containers.SnippetDetailPage} />
+        <Route path={`${match.url}/new`} component={containers.NewSnippetPage} />
+        <Route path={`${match.url}/:id`} component={containers.SnippetDetailPage} />
       </Switch>
     );
   }

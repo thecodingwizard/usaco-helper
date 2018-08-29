@@ -4,15 +4,10 @@ import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import * as actions from "../store/actions";
 import { SnippetDetail } from "../components";
+import baseStyles from "../../styles";
 
 const styles = {
-  container: {
-    padding: "2em",
-    width: "100%",
-    maxWidth: "80em",
-    margin: "auto",
-    boxSizing: "border-box",
-  }
+  container: baseStyles.container,
 };
 
 class SnippetDetailPage extends Component {

@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import { SnippetList } from "../components";
 import * as actions from "../store/actions";
+import baseStyles from "../../styles";
 
 const styles = theme => ({
-  container: {
-    padding: "2em",
-    width: "100%",
-    maxWidth: "40em",
-    margin: "auto",
-    boxSizing: "border-box",
-  },
+  container: baseStyles.smallContainer,
   fab: {
     position: "fixed",
     margin: theme.spacing.unit*4,
@@ -40,7 +36,13 @@ class HomePage extends Component {
         {loading && <CircularProgress />}
         {!loading && <SnippetList snippets={snippets} />}
 
-        <Button variant="fab" color="primary" aria-label="Add" className={classes.fab}>
+        <Button
+          variant="fab"
+          color="primary"
+          aria-label="New Snippet"
+          className={classes.fab}
+          component={Link}
+          to="/snippets/new">
           <AddIcon />
         </Button>
       </div>
