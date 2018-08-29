@@ -14,7 +14,7 @@ const styles = theme => ({
     fontSize: 18,
     fontStyle: "italic"
   },
-  description: {
+  panels: {
     marginTop: theme.spacing.unit*4,
   },
   descriptionHeading: {
@@ -34,30 +34,35 @@ const SnippetDetail = (props) => {
         {snippet.title}
       </Typography>
       <Typography gutterBottom className={classes.shortDescription}>{snippet.shortDescription}</Typography>
-      <ExpansionPanel className={classes.description}>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.descriptionHeading}>Description</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>{snippet.description}</Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel defaultExpanded>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.descriptionHeading}>Code Snippet</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <AceEditor
-            mode="c_cpp"
-            theme="textmate"
-            name="snippetCode"
-            readOnly
-            value={snippet.snippet}
-            editorProps={{$blockScrolling: true}}
-            width="100%"
-            fontSize={14} />
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
+      <div className={classes.panels}>
+        {
+          snippet.description &&
+          <ExpansionPanel>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography className={classes.descriptionHeading}>Description</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Typography>{snippet.description}</Typography>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        }
+        <ExpansionPanel defaultExpanded>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography className={classes.descriptionHeading}>Code Snippet</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <AceEditor
+              mode="c_cpp"
+              theme="textmate"
+              name="snippetCode"
+              readOnly
+              value={snippet.snippet}
+              editorProps={{$blockScrolling: true}}
+              width="100%"
+              fontSize={14} />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </div>
     </div>
   );
 };
