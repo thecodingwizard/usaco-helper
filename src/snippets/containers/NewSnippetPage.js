@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import SnippetForm from "../components/SnippetForm";
 import baseStyles from "../../styles";
+import * as actions from "../store/actions";
 
 const styles = theme => ({
   container: baseStyles.smallContainer,
@@ -19,20 +21,28 @@ class NewSnippetPage extends Component {
   }
 
   handleSubmit(data) {
-    console.log("Form submitted", data);
+    this.props.createNewSnippet(data);
   }
   
   render() {
-    const { classes } = this.props;
+    const { classes, loading } = this.props;
     return (
       <div className={classes.container}>
         <Typography variant="headline" gutterBottom className={classes.heading} align="center">
           Create New Snippet
         </Typography>
-        <SnippetForm onSubmit={this.handleSubmit}/>
+        <SnippetForm onSubmit={this.handleSubmit} submitButtonDisabled={loading} />
       </div>
     );
   }
 }
 
-export default withStyles(styles)(NewSnippetPage);
+const mapStateToProps = state => ({
+  loading: state.snippets.loading
+});
+
+const mapDispatchToProps = dispatch => ({
+  createNewSnippet: snippet => dispatch(actions.createNewSnippet(snippet))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewSnippetPage));

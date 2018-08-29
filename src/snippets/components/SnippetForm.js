@@ -30,7 +30,7 @@ const renderTextField = ({
 );
 
 const SnippetForm = (props) => {
-  const { handleSubmit, pristine, submitting, classes } = props;
+  const { handleSubmit, pristine, submitting, classes, submitButtonDisabled } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className={classes.margin}>
@@ -76,7 +76,7 @@ const SnippetForm = (props) => {
           variant="contained"
           color="primary"
           type="submit" 
-          disabled={pristine || submitting}
+          disabled={pristine || submitting || submitButtonDisabled}
           className={classes.buttons}>
           Submit
         </Button>

@@ -32,3 +32,16 @@ export const startSelectedSnippetSync = snippetId => ({
 export const stopSelectedSnippetSync = () => ({
   type: STOP_SELECTED_SNIPPET_SYNC
 });
+
+export const CREATE_NEW_SNIPPET = "[Snippets] Create New Snippet";
+export const CREATE_NEW_SNIPPET_SUCCESS = "[Snippets] Create New Snippet Success";
+
+export const createNewSnippet = snippet => ({
+  type: CREATE_NEW_SNIPPET,
+  payload: snippet
+});
+
+export const createNewSnippetSuccess = snippet => ({
+  type: CREATE_NEW_SNIPPET_SUCCESS,
+  payload: snippet
+});

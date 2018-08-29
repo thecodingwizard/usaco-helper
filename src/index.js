@@ -1,20 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { BrowserRouter } from "react-router-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { ConnectedRouter } from "connected-react-router";
+import { createBrowserHistory } from "history";
 import { Provider } from "react-redux";
 import { App } from "./containers";
-import registerServiceWorker from './registerServiceWorker';
-import store from "./store";
+import registerServiceWorker from "./registerServiceWorker";
+import configureStore from "./store/configureStore";
 
 import "whatwg-fetch";
 
+const history = createBrowserHistory();
+const store = configureStore(history);
+
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <App />
-    </BrowserRouter>
+    </ConnectedRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 registerServiceWorker();

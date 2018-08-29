@@ -15,6 +15,7 @@ const snippetsReducer = (state = initialState, action) => {
         loading: false
       };
     }
+    case actions.CREATE_NEW_SNIPPET_SUCCESS:
     case actions.SYNC_SELECTED_SNIPPET: {
       return {
         ...state,
@@ -22,6 +23,7 @@ const snippetsReducer = (state = initialState, action) => {
         selectedSnippet: action.payload
       }
     }
+    case actions.CREATE_NEW_SNIPPET:
     case actions.START_SNIPPETS_LIST_SYNC:
     case actions.START_SELECTED_SNIPPET_SYNC: {
       return {

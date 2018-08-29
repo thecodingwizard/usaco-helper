@@ -1,4 +1,5 @@
-import { all, fork, take, cancel } from "redux-saga/effects";
+import { all, fork, take, cancel, call, put, takeLatest } from "redux-saga/effects";
+import { push } from "connected-react-router";
 
 import * as actions from "../actions";
 
@@ -53,9 +54,20 @@ function* syncSelectedSnippetSaga() {
   }
 }
 
+function* createNewSnippet(action) {
+  const doc = yield call(
+    rsf.firestore.addDocument,
+    "snippets",
+    action.payload
+  );
+  yield put(actions.createNewSnippetSuccess(doc));
+  yield put(push(`/snippets/${doc.id}`));
+}
+
 export default function* snippetsSaga() {
   yield all([
     fork(syncSnippetsListSaga),
-    fork(syncSelectedSnippetSaga)
+    fork(syncSelectedSnippetSaga),
+    takeLatest(actions.CREATE_NEW_SNIPPET, createNewSnippet)
   ]);
 }
