@@ -2,7 +2,9 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import green from "@material-ui/core/colors/green";
 import TextField from "@material-ui/core/TextField";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import AceEditor from "react-ace";
@@ -19,7 +21,19 @@ const styles = theme => ({
   buttons: {
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2
-  }
+  },
+  buttonProgress: {
+    color: green[500],
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    marginTop: -12,
+    marginLeft: -12,
+  },
+  buttonWrapper: {
+    display: "inline-block",
+    position: "relative",
+  },
 });
 
 const renderTextField = ({
@@ -90,14 +104,17 @@ const SnippetForm = (props) => {
           className={classes.buttons}>
           Cancel
         </Button>
-        <Button 
-          variant="contained"
-          color="primary"
-          type="submit"
-          disabled={pristine || submitting || showLoadingIndicator}
-          className={classes.buttons}>
-          Submit
-        </Button>
+        <div className={classes.buttonWrapper}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.buttons}
+            disabled={pristine || submitting || showLoadingIndicator}
+            type="submit">
+            Submit
+          </Button>
+          {showLoadingIndicator && <CircularProgress size={24} className={classes.buttonProgress} />}
+        </div>
       </div>
     </form>
   );
