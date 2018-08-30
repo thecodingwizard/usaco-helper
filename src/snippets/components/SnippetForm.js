@@ -63,7 +63,7 @@ const renderCodeEditor = ({
 )
 
 const SnippetForm = (props) => {
-  const { handleSubmit, pristine, submitting, classes, showLoadingIndicator, cancelDestination } = props;
+  const { handleSubmit, pristine, submitting, classes, showLoadingIndicator, cancelDestination, showDeleteButton } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className={classes.margin}>
@@ -115,6 +115,18 @@ const SnippetForm = (props) => {
           </Button>
           {showLoadingIndicator && <CircularProgress size={24} className={classes.buttonProgress} />}
         </div>
+        {
+          showDeleteButton &&
+          <Button
+            variant="outlined"
+            color="secondary"
+            className={classes.buttons}
+            disabled={submitting || showLoadingIndicator}
+            onClick={handleSubmit(values => props.onSubmit({ ...values, toDelete: true }))}
+            type="button">
+            Delete
+          </Button>
+        }
       </div>
     </form>
   );

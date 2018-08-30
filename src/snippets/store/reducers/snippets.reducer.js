@@ -31,11 +31,19 @@ const snippetsReducer = (state = initialState, action) => {
         selectedSnippet: action.payload
       }
     }
+    case actions.DELETE_SNIPPET:
     case actions.CREATE_NEW_SNIPPET:
     case actions.UPDATE_SNIPPET: {
       return {
         ...state,
         formLoading: true
+      };
+    }
+    case actions.DELETE_SNIPPET_SUCCESS: {
+      return {
+        ...state,
+        formLoading: false,
+        selectedSnippet: null
       };
     }
     case actions.START_SNIPPETS_LIST_SYNC:

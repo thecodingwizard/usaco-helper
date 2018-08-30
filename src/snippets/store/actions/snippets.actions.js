@@ -58,3 +58,16 @@ export const updateSnippetSuccess = snippet => ({
   type: UPDATE_SNIPPET_SUCCESS,
   payload: snippet
 });
+
+export const DELETE_SNIPPET = "[Snippets] Delete Snippet"
+export const DELETE_SNIPPET_SUCCESS = "[Snippets] Delete Snippet Success";
+
+export const deleteSnippet = id => ({
+  type: DELETE_SNIPPET,
+  payload: id
+});
+
+export const deleteSnippetSuccess = id => ({
+  type: DELETE_SNIPPET_SUCCESS,
+  payload: id
+});

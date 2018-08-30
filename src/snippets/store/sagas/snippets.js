@@ -77,11 +77,21 @@ function* updateSnippet(action) {
   yield put(push(`/snippets/${action.payload.id}`));
 }
 
+function* deleteSnippet(action) {
+  yield call(
+    rsf.firestore.deleteDocument,
+    `snippets/${action.payload}`
+  );
+  yield put(actions.deleteSnippetSuccess(action.payload));
+  yield put(push("/snippets"));
+}
+
 export default function* snippetsSaga() {
   yield all([
     fork(syncSnippetsListSaga),
     fork(syncSelectedSnippetSaga),
     takeLatest(actions.CREATE_NEW_SNIPPET, createNewSnippet),
-    takeLatest(actions.UPDATE_SNIPPET, updateSnippet)
+    takeLatest(actions.UPDATE_SNIPPET, updateSnippet),
+    takeLatest(actions.DELETE_SNIPPET, deleteSnippet)
   ]);
 }

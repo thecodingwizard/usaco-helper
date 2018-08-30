@@ -11,6 +11,7 @@ import baseStyles from "../../styles";
 
 const styles = theme => ({
   container: baseStyles.container,
+  mediumContainer: baseStyles.mediumContainer,
   fab: baseStyles.fab(theme)
 });
 
@@ -37,15 +38,19 @@ class SnippetDetailPage extends Component {
   }
 
   handleSubmit(snippet) {
-    const { id, ...data } = snippet;
-    this.props.updateSnippet(id, data);
+    const { id, toDelete, ...data } = snippet;
+    if (toDelete) {
+      this.props.deleteSnippet(id);
+    } else {
+      this.props.updateSnippet(id, data);
+    }
   }
 
   render() {
     const { loading, formLoading, classes, isEditing, snippet } = this.props;
 
     return (
-      <div className={classes.container}>
+      <div className={isEditing ? classes.mediumContainer : classes.container}>
         {loading && <CircularProgress />}
         
         {
@@ -62,6 +67,7 @@ class SnippetDetailPage extends Component {
             initialValues={snippet}
             cancelDestination={`/snippets/${snippet.id}`}
             showLoadingIndicator={formLoading}
+            showDeleteButton={true}
             onSubmit={this.handleSubmit} />
         }
 
@@ -92,7 +98,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   startSelectedSnippetSync: snippetId => dispatch(actions.startSelectedSnippetSync(snippetId)),
   stopSelectedSnippetSync: () => dispatch(actions.stopSelectedSnippetSync()),
-  updateSnippet: (snippetId, snippetData) => dispatch(actions.updateSnippet(snippetId, snippetData))
+  updateSnippet: (snippetId, snippetData) => dispatch(actions.updateSnippet(snippetId, snippetData)),
+  deleteSnippet: snippetId => dispatch(actions.deleteSnippet(snippetId))
 });
 
 export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(SnippetDetailPage));
