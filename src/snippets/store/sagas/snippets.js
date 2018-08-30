@@ -64,10 +64,24 @@ function* createNewSnippet(action) {
   yield put(push(`/snippets/${doc.id}`));
 }
 
+function* updateSnippet(action) {
+  yield call(
+    rsf.firestore.updateDocument,
+    `snippets/${action.payload.id}`,
+    action.payload.data
+  );
+  yield put(actions.updateSnippetSuccess({
+    id: action.payload.id,
+    ...action.payload.data
+  }));
+  yield put(push(`/snippets/${action.payload.id}`));
+}
+
 export default function* snippetsSaga() {
   yield all([
     fork(syncSnippetsListSaga),
     fork(syncSelectedSnippetSaga),
-    takeLatest(actions.CREATE_NEW_SNIPPET, createNewSnippet)
+    takeLatest(actions.CREATE_NEW_SNIPPET, createNewSnippet),
+    takeLatest(actions.UPDATE_SNIPPET, updateSnippet)
   ]);
 }

@@ -7,10 +7,7 @@ import baseStyles from "../../styles";
 import * as actions from "../store/actions";
 
 const styles = theme => ({
-  container: {
-    ...baseStyles.smallContainer,
-    maxWidth: "47em",
-  },
+  container: baseStyles.mediumContainer,
   heading: {
     fontSize: theme.typography.display1.fontSize
   }
@@ -28,20 +25,20 @@ class NewSnippetPage extends Component {
   }
   
   render() {
-    const { classes, loading } = this.props;
+    const { classes, formLoading } = this.props;
     return (
       <div className={classes.container}>
         <Typography variant="headline" gutterBottom className={classes.heading} align="center">
           Create New Snippet
         </Typography>
-        <SnippetForm onSubmit={this.handleSubmit} submitButtonDisabled={loading} />
+        <SnippetForm onSubmit={this.handleSubmit} showLoadingIndicator={formLoading} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  loading: state.snippets.loading
+  formLoading: state.snippets.formLoading
 });
 
 const mapDispatchToProps = dispatch => ({

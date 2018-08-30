@@ -49,7 +49,7 @@ const renderCodeEditor = ({
 )
 
 const SnippetForm = (props) => {
-  const { handleSubmit, pristine, submitting, classes, submitButtonDisabled } = props;
+  const { handleSubmit, pristine, submitting, classes, showLoadingIndicator, cancelDestination } = props;
   return (
     <form onSubmit={handleSubmit}>
       <div className={classes.margin}>
@@ -86,15 +86,15 @@ const SnippetForm = (props) => {
         <Button
           variant="outlined"
           component={Link}
-          to="/snippets"
+          to={cancelDestination || "/snippets"}
           className={classes.buttons}>
           Cancel
         </Button>
         <Button 
           variant="contained"
           color="primary"
-          type="submit" 
-          disabled={pristine || submitting || submitButtonDisabled}
+          type="submit"
+          disabled={pristine || submitting || showLoadingIndicator}
           className={classes.buttons}>
           Submit
         </Button>

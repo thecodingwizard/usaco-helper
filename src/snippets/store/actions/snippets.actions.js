@@ -45,3 +45,16 @@ export const createNewSnippetSuccess = snippet => ({
   type: CREATE_NEW_SNIPPET_SUCCESS,
   payload: snippet
 });
+
+export const UPDATE_SNIPPET = "[Snippets] Update Snippet";
+export const UPDATE_SNIPPET_SUCCESS = "[Snippets] Update Snippet Success";
+
+export const updateSnippet = (id, data) => ({
+  type: UPDATE_SNIPPET,
+  payload: { id, data }
+});
+
+export const updateSnippetSuccess = snippet => ({
+  type: UPDATE_SNIPPET_SUCCESS,
+  payload: snippet
+});

@@ -11,12 +11,7 @@ import baseStyles from "../../styles";
 
 const styles = theme => ({
   container: baseStyles.smallContainer,
-  fab: {
-    position: "fixed",
-    margin: theme.spacing.unit*4,
-    bottom: 0,
-    right: 0,
-  },
+  fab: baseStyles.fab(theme)
 });
 
 class HomePage extends Component {
