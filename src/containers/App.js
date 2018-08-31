@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Switch, Route, Redirect, Link } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,6 +9,10 @@ import Loadable from "../components/Loadable";
 
 const LoadableSnippets = Loadable({
   loader: () => import("../snippets")
+});
+
+const LoadableCalculator = Loadable({
+  loader: () => import("../calculator")
 });
 
 const styles = {
@@ -41,7 +45,7 @@ class App extends Component {
         </AppBar>
 
         <Switch>
-          <Route exact path="/" component={() => <Redirect to="/snippets" />} />
+          <Route path="/calculator" component={LoadableCalculator} />
           <Route path="/snippets" component={LoadableSnippets} />
         </Switch>
       </div>
