@@ -35,7 +35,7 @@ class App extends Component {
               className={classes.brand}
               component={Link}
               to="/">
-              USACO Snippets
+              USACO Helper
             </Typography>
           </Toolbar>
         </AppBar>

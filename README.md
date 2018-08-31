@@ -1,3 +1,3 @@
-# USACO Snippets
+# USACO Helper
 
-A website containing useful snippets for competitive programming.
+A website containing useful tools and snippets for competitive programming.
