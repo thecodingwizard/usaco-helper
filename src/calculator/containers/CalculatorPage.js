@@ -27,9 +27,13 @@ const styles = theme => ({
   logTitle: {
     marginBottom: theme.spacing.unit
   },
+  logTableTitle: {
+    marginTop: theme.spacing.unit*3,
+    marginBottom: theme.spacing.unit*1.5,
+    fontSize: 18
+  },
   logTableContainer: {
     width: "100%",
-    marginTop: theme.spacing.unit * 3,
     overflowX: "auto",
   },
 });
@@ -85,6 +89,9 @@ class CalculatorPage extends Component {
             is {this.state.logAns.toFixed(2)}
           </Typography>
         </div>
+        <Typography variant="subheading" className={classes.logTableTitle}>
+          Common Log Values
+        </Typography>
         <Paper className={classes.logTableContainer}>
           <Table>
             <TableHead>
