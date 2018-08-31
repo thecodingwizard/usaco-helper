@@ -3,6 +3,12 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 import baseStyles from "../../styles";
 
 const styles = theme => ({
@@ -20,7 +26,12 @@ const styles = theme => ({
   },
   logTitle: {
     marginBottom: theme.spacing.unit
-  }
+  },
+  logTableContainer: {
+    width: "100%",
+    marginTop: theme.spacing.unit * 3,
+    overflowX: "auto",
+  },
 });
 
 class CalculatorPage extends Component {
@@ -29,7 +40,14 @@ class CalculatorPage extends Component {
 
     this.state = {
       log: 100000,
-      logAns: Math.log2(100000)
+      logAns: Math.log2(100000),
+      logTableRows: [
+        { name: "1 Thousand", value: 1000 },
+        { name: "10 Thousand", value: 10000 },
+        { name: "100 Thousand", value: 100000 },
+        { name: "1 Million", value: 1000000 },
+        { name: "1 Billion", value: 1000000000 }
+      ]
     };
 
     this.handleLogChange = this.handleLogChange.bind(this);
@@ -45,6 +63,7 @@ class CalculatorPage extends Component {
 
   render() {
     const { classes } = this.props;
+    const { logTableRows } = this.state;
     return (
       <div className={classes.container}>
         <Typography variant="display1" gutterBottom>
@@ -66,6 +85,30 @@ class CalculatorPage extends Component {
             is {this.state.logAns.toFixed(2)}
           </Typography>
         </div>
+        <Paper className={classes.logTableContainer}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Argument</TableCell>
+                <TableCell numeric>Argument (Numeric)</TableCell>
+                <TableCell numeric>Power</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {logTableRows.map(row => {
+                return (
+                  <TableRow key={row.value}>
+                    <TableCell component="th" scope="row">
+                      {row.name}
+                    </TableCell>
+                    <TableCell numeric>{row.value}</TableCell>
+                    <TableCell numeric>{Math.log2(row.value).toFixed(2)}</TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </Paper>
       </div>
     );
   }
