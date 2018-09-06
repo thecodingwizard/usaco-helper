@@ -48,6 +48,7 @@ class CalculatorPage extends Component {
       logTableRows: [
         { name: "1 Thousand", value: 1000 },
         { name: "10 Thousand", value: 10000 },
+        { name: "50 Thousand", value: 50000 },
         { name: "100 Thousand", value: 100000 },
         { name: "1 Million", value: 1000000 },
         { name: "1 Billion", value: 1000000000 }
