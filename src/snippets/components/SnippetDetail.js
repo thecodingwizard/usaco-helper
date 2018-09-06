@@ -8,6 +8,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AceEditor from "react-ace";
 import "brace/mode/c_cpp";
 import "brace/theme/textmate";
+import ReactMarkdown from "react-markdown";
 
 const styles = theme => ({
   shortDescription: {
@@ -42,7 +43,7 @@ const SnippetDetail = (props) => {
               <Typography className={classes.descriptionHeading}>Description</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>{snippet.description}</Typography>
+              <ReactMarkdown source={snippet.description} />
             </ExpansionPanelDetails>
           </ExpansionPanel>
         }
