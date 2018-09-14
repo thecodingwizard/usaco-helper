@@ -10,7 +10,9 @@ import configureStore from "./store/configureStore";
 
 import "whatwg-fetch";
 
-const history = createBrowserHistory();
+const history = createBrowserHistory({
+  basename: process.env.PUBLIC_URL
+});
 const store = configureStore(history);
 
 ReactDOM.render(
