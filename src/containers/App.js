@@ -33,6 +33,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     height: "100%",
+    width: "100%",
   },
   brand: {
     flexGrow: 1,
@@ -57,10 +58,12 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
+    width: "100%",
   },
   appContainer: {
     display: "flex",
     flexGrow: 1,
+    width: "100%",
   },
   permanentDrawer: {
     height: "100%",

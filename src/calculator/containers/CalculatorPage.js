@@ -35,6 +35,7 @@ const styles = theme => ({
   logTableContainer: {
     width: "100%",
     overflowX: "auto",
+    boxSizing: "border-box"
   },
 });
 
