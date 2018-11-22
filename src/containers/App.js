@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu"
 import ListIcon from "@material-ui/icons/List";
@@ -156,6 +156,7 @@ class App extends Component {
             <Switch>
               <Route path="/calculator" component={LoadableCalculator} />
               <Route path="/snippets" component={LoadableSnippets} />
+              <Route path="/" exact render={() => <Redirect to="/snippets" />} />
             </Switch>
           </main>
         </div>
