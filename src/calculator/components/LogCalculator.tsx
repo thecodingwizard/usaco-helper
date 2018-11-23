@@ -1,35 +1,31 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import Divider from "@material-ui/core/Divider";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import baseStyles from "../../styles";
+import {Theme} from "@material-ui/core/styles/createMuiTheme";
+import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
+import createStyles from "@material-ui/core/styles/createStyles";
 
-const styles = theme => ({
-  container: baseStyles.smallContainer,
-  titleDivider: {
-    marginBottom: theme.spacing.unit*4
-  },
+const styles = (theme: Theme) => createStyles({
   logText: {
     fontSize: 16,
     display: "inline-block"
   },
   logInput: {
-    marginLeft: theme.spacing.unit*1.5,
-    marginRight: theme.spacing.unit*1.5
+    marginLeft: theme.spacing.unit * 1.5,
+    marginRight: theme.spacing.unit * 1.5
   },
   logTitle: {
     marginBottom: theme.spacing.unit
   },
   logTableTitle: {
-    marginTop: theme.spacing.unit*3,
-    marginBottom: theme.spacing.unit*1.5,
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 1.5,
     fontSize: 18
   },
   logTableContainer: {
@@ -39,7 +35,13 @@ const styles = theme => ({
   },
 });
 
-class CalculatorPage extends Component {
+type State = {
+  log: number,
+  logAns: number,
+  logTableRows: { name: string, value: number }[]
+};
+
+class LogCalculator extends Component<WithStyles<typeof styles>, State> {
   constructor(props) {
     super(props);
 
@@ -71,11 +73,7 @@ class CalculatorPage extends Component {
     const { classes } = this.props;
     const { logTableRows } = this.state;
     return (
-      <div className={classes.container}>
-        <Typography variant="display1" gutterBottom>
-          Calculator
-        </Typography>
-        <Divider className={classes.titleDivider} />
+      <React.Fragment>
         <Typography variant="title" className={classes.logTitle}>
           Log base 2
         </Typography>
@@ -86,7 +84,7 @@ class CalculatorPage extends Component {
           <TextField
             value={this.state.log}
             onChange={this.handleLogChange}
-            className={classes.logInput} />
+            className={classes.logInput}/>
           <Typography variant="body1" className={classes.logText}>
             is {this.state.logAns.toFixed(2)}
           </Typography>
@@ -118,9 +116,9 @@ class CalculatorPage extends Component {
             </TableBody>
           </Table>
         </Paper>
-      </div>
+      </React.Fragment>
     );
   }
 }
 
-export default withStyles(styles)(CalculatorPage);
+export default withStyles(styles)(LogCalculator);
