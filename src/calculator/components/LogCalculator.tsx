@@ -74,22 +74,22 @@ class LogCalculator extends Component<WithStyles<typeof styles>, State> {
     const { logTableRows } = this.state;
     return (
       <React.Fragment>
-        <Typography variant="title" className={classes.logTitle}>
+        <Typography variant="h6" className={classes.logTitle}>
           Log base 2
         </Typography>
         <div>
-          <Typography variant="body1" className={classes.logText}>
+          <Typography variant="body2" className={classes.logText}>
             Log base 2 of
           </Typography>
           <TextField
             value={this.state.log}
             onChange={this.handleLogChange}
             className={classes.logInput}/>
-          <Typography variant="body1" className={classes.logText}>
+          <Typography variant="body2" className={classes.logText}>
             is {this.state.logAns.toFixed(2)}
           </Typography>
         </div>
-        <Typography variant="subheading" className={classes.logTableTitle}>
+        <Typography variant="subtitle1" className={classes.logTableTitle}>
           Common Log Values
         </Typography>
         <Paper className={classes.logTableContainer}>

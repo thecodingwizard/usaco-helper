@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Switch, Route, Link, Redirect } from "react-router-dom";
-import { withStyles } from "@material-ui/core/styles";
+import { createStyles, Theme, WithStyles, withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu"
 import ListIcon from "@material-ui/icons/List";
 import GradeIcon from "@material-ui/icons/Grade";
@@ -27,7 +26,7 @@ const LoadableCalculator = Loadable({
 
 const drawerWidth = 240;
 
-const styles = theme => ({
+const styles = (theme: Theme) => createStyles({
   root: {
     flexGrow: 1,
     display: "flex",
@@ -70,27 +69,31 @@ const styles = theme => ({
   },
 });
 
-class App extends Component {
+type State = {
+  mobileOpen: boolean
+};
+
+class App extends Component<WithStyles<typeof styles>, State> {
   state = {
     mobileOpen: false,
   };
-  
+
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     const drawer = (
       <List component="nav">
-        <ListItem button component={Link} to="/snippets">
+        <ListItem button component={props => <Link {...props} to="/snippets" />}>
           <ListItemIcon>
             <ListIcon />
           </ListItemIcon>
           <ListItemText primary="Snippets" />
         </ListItem>
-        <ListItem button component={Link} to="/calculator">
+        <ListItem button component={props => <Link {...props} to="/calculator" />}>
           <ListItemIcon>
             <GradeIcon />
           </ListItemIcon>
@@ -111,11 +114,10 @@ class App extends Component {
               <MenuIcon />
             </IconButton>
             <Typography
-              variant="title"
+              variant="h6"
               color="inherit"
               className={classes.brand}
-              component={Link}
-              to="/">
+              component={props => <Link {...props} to="/" />}>
               USACO Helper
             </Typography>
           </Toolbar>
@@ -124,7 +126,7 @@ class App extends Component {
         <Hidden mdUp>
           <Drawer
             variant="temporary"
-            anchor={theme.direction === "rtl" ? "right" : "left"}
+            anchor="right"
             open={this.state.mobileOpen}
             onClose={this.handleDrawerToggle}
             classes={{
@@ -164,9 +166,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles, { withTheme: true })(App);

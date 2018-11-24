@@ -31,7 +31,7 @@ const SnippetDetail = (props) => {
 
   return (
     <div>
-      <Typography variant="display1" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         {snippet.title}
       </Typography>
       <Typography gutterBottom className={classes.shortDescription}>{snippet.shortDescription}</Typography>

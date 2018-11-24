@@ -1,7 +1,7 @@
 import React from "react";
 import Loadable from "react-loadable";
 
-const Loading = (props) => {
+const Loading: React.FunctionComponent = () => {
   return (
     <div>Loading...</div>
   );

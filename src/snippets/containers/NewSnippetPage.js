@@ -28,7 +28,7 @@ class NewSnippetPage extends Component {
     const { classes, formLoading } = this.props;
     return (
       <div className={classes.container}>
-        <Typography variant="headline" gutterBottom className={classes.heading} align="center">
+        <Typography variant="h5" gutterBottom className={classes.heading} align="center">
           Create New Snippet
         </Typography>
         <SnippetForm onSubmit={this.handleSubmit} showLoadingIndicator={formLoading} />

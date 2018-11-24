@@ -20,7 +20,7 @@ class CalculatorPage extends Component<WithStyles<typeof styles>> {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
-        <Typography variant="display1" gutterBottom>
+        <Typography variant="h4" gutterBottom>
           Calculator
         </Typography>
         <Divider className={classes.titleDivider} />

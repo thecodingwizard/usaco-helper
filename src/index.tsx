@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { create as createJss } from "jss";
 import preset from "jss-preset-default";
 import JssProvider from "react-jss/lib/JssProvider";
-import { createGenerateClassName } from "@material-ui/core/styles";
+import { createGenerateClassName, createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 import { App } from "./containers";
 import registerServiceWorker from "./registerServiceWorker";
@@ -22,12 +22,19 @@ const store = configureStore(history);
 
 const jss = createJss(preset());
 const generateClassName = createGenerateClassName();
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <JssProvider jss={jss} generateClassName={generateClassName}>
-        <App />
+        <MuiThemeProvider theme={theme}>
+          <App />
+        </MuiThemeProvider>
       </JssProvider>
     </ConnectedRouter>
   </Provider>,
