@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {Theme} from "@material-ui/core/styles/createMuiTheme";
-import withStyles, {WithStyles} from "@material-ui/core/styles/withStyles";
+import { Theme } from "@material-ui/core/styles/createMuiTheme";
+import withStyles, { WithStyles } from "@material-ui/core/styles/withStyles";
 import createStyles from "@material-ui/core/styles/createStyles";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -11,7 +11,7 @@ import baseStyles from "../../styles";
 const styles = (theme: Theme) => createStyles({
   container: baseStyles.smallContainer,
   titleDivider: {
-    marginBottom: theme.spacing.unit*4,
+    marginBottom: theme.spacing.unit * 4,
   },
 });
 
