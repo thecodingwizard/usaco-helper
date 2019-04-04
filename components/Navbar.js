@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import Link from "next/link";
-import styled from "styled-components";
+import classnames from "classnames";
 
-const Container = styled.nav`
-  background-color: white;
-  height: 70px;
-  box-shadow: 0 3px 6px hsla(0, 0%, 0%, 0.1);
-`;
+const NavLink = props => (
+  <Link href={props.href}>
+    <a className={classnames("inline-block px-6 text-grey-1 no-underline hover:bg-grey-10", props.className)}
+       style={{ lineHeight: "70px", transition: "background-color 0.2s" }}>
+      {props.children}
+    </a>
+  </Link>
+);
 
 class Navbar extends Component {
   render() {
     return (
-      <Container>
-        <div className="container mx-auto">
-          <Link href="/">
-            <a>USACO Helper</a>
-          </Link>
+      <div className="bg-white shadow">
+        <div className="container mx-auto flex">
+          <div className="flex-none flex">
+            <NavLink href="/" className="text-xl">USACO Helper</NavLink>
+          </div>
+          <div className="flex-grow flex justify-end items-center">
+            <NavLink href="/snippets">Snippets</NavLink>
+            <NavLink href="/calculator">Calculator</NavLink>
+          </div>
         </div>
-      </Container>
+      </div>
     );
   }
 }
