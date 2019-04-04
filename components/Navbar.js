@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Link from "next/link";
 import styled from "styled-components";
 
 const Container = styled.nav`
@@ -12,7 +13,9 @@ class Navbar extends Component {
     return (
       <Container>
         <div className="container mx-auto">
-
+          <Link href="/">
+            <a>USACO Helper</a>
+          </Link>
         </div>
       </Container>
     );
