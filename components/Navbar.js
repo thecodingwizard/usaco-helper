@@ -5,7 +5,7 @@ import classnames from "classnames";
 const NavLink = props => (
   <Link href={props.href}>
     <a className={classnames("inline-block px-6 text-grey-1 no-underline hover:bg-grey-10", props.className)}
-       style={{ lineHeight: "70px", transition: "background-color 0.2s" }}>
+       style={{ lineHeight: "60px", transition: "background-color 0.2s" }}>
       {props.children}
     </a>
   </Link>
