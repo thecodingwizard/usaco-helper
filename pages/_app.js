@@ -1,7 +1,8 @@
 import React from "react";
 import App, { Container } from "next/app";
-import Navbar from "../components/Navbar";
 import styled from "styled-components";
+import Navbar from "../components/Navbar";
+import "../styles/index.css";
 
 const PageWrapper = styled.div`
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
