@@ -14,7 +14,7 @@ const NavLink = props => (
 class Navbar extends Component {
   render() {
     return (
-      <div className="bg-white shadow">
+      <div className="bg-white shadow-md relative z-10">
         <div className="container mx-auto flex">
           <div className="flex-none flex">
             <NavLink href="/" className="text-xl">USACO Helper</NavLink>

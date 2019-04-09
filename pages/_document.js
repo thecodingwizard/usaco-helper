@@ -28,16 +28,8 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="UTF-8" />
           <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-          <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
-          <style>{`
-            html, body {
-              margin: 0;
-              height: 100%;
-            }
-            #__next {
-              height: 100%;
-            }
-          `}</style>
+          <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+          <style>{`html,body{margin:0;height:100%;}#__next{height: 100%;}`}</style>
         </Head>
         <body >
           <Main />

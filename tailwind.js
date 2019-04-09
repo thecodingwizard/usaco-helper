@@ -75,13 +75,16 @@ let colors = {
   'orange-lighter': '#fcd9b6',
   'orange-lightest': '#fff5eb',
 
-  'yellow-darkest': '#453411',
-  'yellow-darker': '#684f1d',
-  'yellow-dark': '#f2d024',
-  'yellow': '#ffed4a',
-  'yellow-light': '#fff382',
-  'yellow-lighter': '#fff9c2',
-  'yellow-lightest': '#fcfbeb',
+  'yellow-1': '#8D2B0B',
+  'yellow-2': '#B44D12',
+  'yellow-3': '#CB6E17',
+  'yellow-4': '#DE911D',
+  'yellow-5': '#F0B429',
+  'yellow-6': '#F7C948',
+  'yellow-7': '#FADB5F',
+  'yellow-8': '#FCE588',
+  'yellow-9': '#FFF3C4',
+  'yellow-10': '#FFFBEA',
 
   'green-darkest': '#0f2f21',
   'green-darker': '#1a4731',
@@ -99,13 +102,16 @@ let colors = {
   'teal-lighter': '#a0f0ed',
   'teal-lightest': '#e8fffe',
 
-  'blue-darkest': '#12283a',
-  'blue-darker': '#1c3d5a',
-  'blue-dark': '#2779bd',
-  'blue': '#3490dc',
-  'blue-light': '#6cb2eb',
-  'blue-lighter': '#bcdefa',
-  'blue-lightest': '#eff8ff',
+  'blue-1': '#003E6B',
+  'blue-2': '#0A558C',
+  'blue-3': '#0F609B',
+  'blue-4': '#186FAF',
+  'blue-5': '#2680C2',
+  'blue-6': '#4098D7',
+  'blue-7': '#62B0E8',
+  'blue-8': '#84C5F4',
+  'blue-9': '#B6E0FE',
+  'blue-10': '#DCEEFB',
 
   'indigo-darkest': '#191e38',
   'indigo-darker': '#2f365f',
@@ -264,6 +270,8 @@ module.exports = {
     '3xl': '1.875rem',  // 30px
     '4xl': '2.25rem',   // 36px
     '5xl': '3rem',      // 48px
+    "6xl": "3.75rem",   // 60px
+    "7xl": "4.5rem",    // 72px
   },
 
 
