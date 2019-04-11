@@ -7,7 +7,7 @@ const Hero = styled.div`
 `;
 
 const Features = styled.div`
-  margin-bottom: -140px;
+  margin-bottom: -175px;
 `;
 
 const FeaturesTitle = styled.h2`
@@ -20,10 +20,6 @@ const FeaturesTitle = styled.h2`
   }
 `;
 
-const FeaturesList = styled.ul`
-  columns: 2;
-`;
-
 function Home() {
   return (
     <div>
@@ -32,17 +28,19 @@ function Home() {
           <h1 className="text-blue-10 text-5xl pt-32 pb-6 font-normal">USACO Helper</h1>
           <p className="text-blue-10 text-2xl pb-20">USACO Helper is a platform that aims to assist USACO contestants and competitive programmers.</p>
 
-          <Features className="bg-white shadow-md p-10 text-grey-1">
+          <Features className="bg-white shadow-md p-6 md:p-10 text-grey-1">
             <FeaturesTitle className="text-3xl font-normal mb-5">Features</FeaturesTitle>
 
-            <FeaturesList className="list-reset">
-              <BulletListItem>Create, edit, and share code snippets</BulletListItem>
-              <BulletListItem>Calculate log base 2 with ease</BulletListItem>
-              <BulletListItem>Fully open-source</BulletListItem>
-              <BulletListItem>Calculate  USACO contest score (Coming Soon!)</BulletListItem>
-              <BulletListItem>View ASCII tables (Coming Soon!)</BulletListItem>
-              <BulletListItem>Output Comparison (Coming Soon!)</BulletListItem>
-            </FeaturesList>
+            <ul className="list-reset flex flex-wrap">
+              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Create, edit, and share code snippets</BulletListItem>
+              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Calculate log base 2 with ease</BulletListItem>
+              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Fully open-source</BulletListItem>
+              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Get notified when USACO releases results (Coming Soon!)</BulletListItem>
+              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">View compiled USACO results (Coming Soon!)</BulletListItem>
+              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Calculate USACO contest score (Coming Soon!)</BulletListItem>
+              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">View ASCII tables (Coming Soon!)</BulletListItem>
+              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Output Comparison (Coming Soon!)</BulletListItem>
+            </ul>
           </Features>
           &nbsp;
         </div>
