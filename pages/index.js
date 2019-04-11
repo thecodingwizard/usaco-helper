@@ -31,15 +31,15 @@ function Home() {
           <Features className="bg-white shadow-md p-6 md:p-10 text-grey-1">
             <FeaturesTitle className="text-3xl font-normal mb-5">Features</FeaturesTitle>
 
-            <ul className="list-reset flex flex-wrap">
-              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Create, edit, and share code snippets</BulletListItem>
-              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Calculate log base 2 with ease</BulletListItem>
-              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Fully open-source</BulletListItem>
-              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Get notified when USACO releases results (Coming Soon!)</BulletListItem>
-              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">View compiled USACO results (Coming Soon!)</BulletListItem>
-              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Calculate USACO contest score (Coming Soon!)</BulletListItem>
-              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">View ASCII tables (Coming Soon!)</BulletListItem>
-              <BulletListItem className="w-full lg:w-1/2 mb-2 sm:mb-0">Output Comparison (Coming Soon!)</BulletListItem>
+            <ul className="list-reset lg:list-columns-2">
+              <BulletListItem className="mb-2 sm:mb-0">Create, edit, and share code snippets</BulletListItem>
+              <BulletListItem className="mb-2 sm:mb-0">Calculate log base 2 with ease</BulletListItem>
+              <BulletListItem className="mb-2 sm:mb-0">Fully open-source</BulletListItem>
+              <BulletListItem className="mb-2 sm:mb-0">Get notified when USACO releases results (Coming Soon!)</BulletListItem>
+              <BulletListItem className="mb-2 sm:mb-0">View compiled USACO results (Coming Soon!)</BulletListItem>
+              <BulletListItem className="mb-2 sm:mb-0">Calculate USACO contest score (Coming Soon!)</BulletListItem>
+              <BulletListItem className="mb-2 sm:mb-0">View ASCII tables (Coming Soon!)</BulletListItem>
+              <BulletListItem className="mb-2 sm:mb-0">Output Comparison (Coming Soon!)</BulletListItem>
             </ul>
           </Features>
           &nbsp;

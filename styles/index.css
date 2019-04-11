@@ -60,3 +60,9 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+
+@responsive {
+  .list-columns-2 {
+    columns: 2;
+  }
+}
